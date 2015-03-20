@@ -1,2 +1,2 @@
-fun greaterThan (x::xl) k = if x > k then x::(greaterThan xl k) else greaterThan xl k
-| greaterThan [] k = [];
+fun greaterThan [] k = []
+| greaterThan (x::xl) k = if x > k then x::(greaterThan xl k) else greaterThan xl k;
