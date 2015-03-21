@@ -1,5 +1,5 @@
 fun partition f [] = ([], [])
-|	partition f (x::l) = 
+|	partition f l = 
 	let
 		fun iter f (x::l) lis1 lis2 = 
 			if(f(x)) then iter f l (x::lis1) lis2
