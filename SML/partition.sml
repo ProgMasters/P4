@@ -1,9 +1,9 @@
 fun partition f [] = ([], [])
-|	partition f (x::l) = let
-		fun iter f (x::l) trueList falseList =
-			if (f x)
-				then iter f l (x::trueList) falseList
-			else iter f l trueList (x::falseList)
-			| iter f [] trueList falseList = (trueList, falseList)
-		in iter f(x::l) [] []
+|	partition f (x::l) = 
+	let
+		fun iter f (x::l) lis1 lis2 = 
+			if(f(x)) then iter f l (x::lis1) lis2
+			else iter f l lis1 (x::lis2)
+		| iter f [] lis1 lis2 = (List.rev lis1, List.rev lis2)
+		in iter f l [] []		
 	end;
