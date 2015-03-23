@@ -1,9 +1,15 @@
 fun partition f [] = ([], [])
-|	partition f l = 
+| partition f l = 
 	let
-		fun iter f (x::l) lis1 lis2 = 
-			if(f(x)) then iter f l (x::lis1) lis2
-			else iter f l lis1 (x::lis2)
-		| iter f [] lis1 lis2 = (List.rev lis1, List.rev lis2)
-		in iter f l [] []		
-	end;
+		fun left f (x::lis) = 
+			if f(x) then x::(left f lis)
+			else left f lis
+		| left f [] = []
+
+		fun right f (y::lis) = 
+			if f(y) then right f lis
+			else y::(right f lis)
+		| right f [] = []
+	in (left f l, right f l)
+end;
+
