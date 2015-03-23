@@ -12,4 +12,3 @@ fun partition f [] = ([], [])
 		| right f [] = []
 	in (left f l, right f l)
 end;
-
